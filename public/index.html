@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <style id="hsStyle" ref="hsStyle">
+
+    </style>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        blockquote {
+            display: block;
+            padding: 15px 15px 15px 1rem;
+            font-size: 0.9em;
+            margin: 1em 0px;
+            color: rgb(129, 145, 152);
+            border-left: 6px solid rgb(220, 230, 240);
+            background: rgb(242, 247, 251);
+            overflow: auto;
+            overflow-wrap: normal;
+            word-break: normal;
+        }
+        
+        pre code {
+            font-family: Consolas, Inconsolata, Courier, monospace;
+            border-radius: 0px;
+        }
+    </style>
+</head>
+
+<body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>
