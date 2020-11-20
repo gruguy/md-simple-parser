@@ -3,6 +3,8 @@
 ## 项目简介
 本项目是一个轻量的markdown格式转换工具。是我在使用markdown写微信文章时发现：很多现有的转换器格式支持有问题，样式单一，所以决定自己写本项目。
 
+![项目图片](public/assets/img/md-simple1.png)
+
 ## 使用技术
 
 * markdown-it 这是一个github开源组件，用于markdown转换，链接在这里 [markdown-it](https://github.com/markdown-it/markdown-it)
@@ -32,3 +34,7 @@ npm run serve
 npm run build
 ```
 打完包，在项目中找到dist目录，拷贝至自己的服务器上面即可。
+
+## 最后做了一个操作的gif图片
+
+![项目图片](public/assets/img/md-simple-parser-opt_ev.gif)
