@@ -2,21 +2,12 @@
   <div class="wrapper">
     <div class="item"></div>
     <div class="item right">
-      <span class="btn" @click="md_render_copy">复制</span>
-      <span class="btn ml20" @click="md_render">转换</span>
+      <span class="btn" @click="md_render">转换</span>
+      <span class="btn ml20" @click="md_render_copy">复制</span>
       <span class="btn ml20" @click="showLineNum">显示行号</span>
       <label class="codeLabel" for="codeTheme">代码主题
-        <select name="codeTheme" id="" @change="selectStyle">
-          <option value="agate">agate</option>
-          <option value="androidstudio">androidstudio</option>
-          <option value="atom-one-dark">atom-one-dark</option>
-          <option value="dracula">dracula</option>
-          <option value="railcasts">railcasts</option>
-          <option value="rainbow">rainbow</option>
-          <option value="sublime">sublime</option>
-          <option value="tomorrow">tomorrow</option>
-          <option value="vs">vs</option>
-          <option value="zenburn">zenburn</option>
+        <select name="codeTheme" v-model="selectedCss" @change="selectStyle">
+          <option v-for="(item) in selectStyleArr" :key="item" :value="item" >{{item}}</option>
         </select>
       </label>
     </div>
@@ -41,8 +32,16 @@ const md = require('markdown-it')({
 });
 export default {
   props: ['outputContent'],
+  data(){
+    return {
+      selectStyleArr: ['agate', 'androidstudio','atom-one-dark', 'dracula', 'railcasts', 'rainbow', 'sublime', 'tomorrow', 'vs', 'zenburn'],
+      selectedCss: ''
+    }
+  },
   
   mounted(){
+    this.selectedCss = localStorage.getItem('$codeCss') || 'agate';
+    alert(this.selectedCss)
     this.getStyleByHttp('agate');
   },
   methods: {
@@ -64,8 +63,9 @@ export default {
     },
        selectStyle(e){
       const css = e.target.value;
-      console.log('../assets/css/'+ css + '.css')
       this.getStyleByHttp(css);
+      // 存入本地
+      localStorage.setItem('$codeCss', css);
       // console.log(style)
       // this.$refs.hsStyle.innerHTML = style;
 

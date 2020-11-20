@@ -34,7 +34,8 @@ export default {
     }
   },
   mounted(){
-    this.getStyleByHttp('agate');
+    const codeCss = localStorage.getItem('$codeCss') || 'agate'
+    this.getStyleByHttp(codeCss);
   },
   methods: {
     renderContent(){
