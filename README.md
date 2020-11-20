@@ -3,7 +3,7 @@
 ## 项目简介
 本项目是一个轻量的markdown格式转换工具。是我在使用markdown写微信文章时发现：很多现有的转换器格式支持有问题，样式单一，所以决定自己写本项目。
 
-![项目图片](public/assets/img/md-simple1.png)
+![项目图片](https://raw.githubusercontent.com/gruguy/md-simple-parser/master/public/assets/img/md-simple1.png)
 
 ## 使用技术
 
@@ -37,4 +37,4 @@ npm run build
 
 ## 最后做了一个操作的gif图片
 
-![项目图片](public/assets/img/md-simple-parser-opt_ev.gif)
+![项目图片](https://raw.githubusercontent.com/gruguy/md-simple-parser/master/public/assets/img/md-simple-parser-opt_ev.gif)
