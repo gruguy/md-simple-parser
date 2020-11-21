@@ -83,26 +83,26 @@ const vueConfig = {
         }
     },
 
-    // devServer: {
-    //     // development server port 8000
-    //     port: 8080,
-    //     // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
-    //     proxy: {
-    //         '/manage': {
-    //             target: 'http://localhost:8082/',
-    //             ws: true,
-    //             changeOrigin: true,
-    //             pathRewrite: {
-    //               '^/manage': ''
-    //             }
-    //         }
-    //     }
-    // },
+    devServer: {
+        // development server port 8000
+        port: 8000,
+        // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
+        // proxy: {
+        //     '/manage': {
+        //         target: 'http://localhost:8082/',
+        //         ws: true,
+        //         changeOrigin: true,
+        //         pathRewrite: {
+        //           '^/manage': ''
+        //         }
+        //     }
+        // }
+    },
 
     // disable source map in production
     productionSourceMap: false,
     lintOnSave: undefined,
-    publicPath: './',
+    publicPath: '/md-simple-parser/',
     // babel-loader no-ignore node_modules/*
     transpileDependencies: []
 }
