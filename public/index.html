@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.6.0/dist/highlightjs-line-numbers.min.js"></script>
     <title>
         <%= htmlWebpackPlugin.options.title %>
     </title>
@@ -13,6 +15,22 @@
 
     </style>
     <style>
+         ::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+         ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
         * {
             box-sizing: border-box;
         }
@@ -33,6 +51,16 @@
         pre code {
             font-family: Consolas, Inconsolata, Courier, monospace;
             border-radius: 0px;
+            display: block !important;
+            white-space: pre !important;
+            word-wrap: normal !important;
+            word-break: normal !important;
+            overflow: auto !important;
+        }
+        
+        .output_wrapper pre code .linenum {
+            padding-right: 20px;
+            word-spacing: 0px;
         }
     </style>
 </head>
