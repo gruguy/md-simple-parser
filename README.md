@@ -38,3 +38,5 @@ npm run build
 ## 最后做了一个操作的gif图片
 
 ![项目图片](https://raw.githubusercontent.com/gruguy/md-simple-parser/master/public/assets/img/md-simple-parser-opt_ev.gif)
+
+## demo我运行在GitHub上面了，点击这里查看[点我查看demo](https://gruguy.github.io/md-simple-parser/)
