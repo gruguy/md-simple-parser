@@ -34,10 +34,14 @@ import { mapGetters, mapMutations} from 'vuex'
   import 'codemirror/mode/sql/sql.js'
   import 'codemirror/mode/swift/swift.js'
   import 'codemirror/mode/vue/vue.js'
+  import 'codemirror/addon/edit/matchbrackets.js'
+  import 'codemirror/addon/edit/matchtags.js'
+  import 'codemirror/addon/edit/closetag.js'
 
   // 尝试获取全局实例
   const CodeMirror = window.CodeMirror || _CodeMirror
 const hljs = require('highlight.js');
+import lineNumbersBlock from '../assets/js/highlightjs-line-numbers'
 const md = require('markdown-it')({
   html: true,
   linkify: true,
@@ -74,8 +78,16 @@ export default {
         coder: null,
         // 默认配置
         options: {
+          extraKeys: { "Ctrl": "autocomplete" },
+          styleActiveLine: true,            // 选中行高亮
+          mode: "text/javascript",
+          matchBrackets: true,  
+          matchtags: true,  
+          closeTag: true,            // 匹配括号
+          // hintOptions: {hint: synonyms},  // 自动提示配置
           // 缩进格式
-          tabSize: 2,
+          tabSize: 1,
+          indentUnit: 2,   
           // 主题，对应主题库 JS 需要提前引入
           theme: 'cobalt',
           // 显示行号
@@ -134,11 +146,12 @@ export default {
     this._initialize()
   },
   computed: {
-    ...mapGetters(['intimeMode', 'editorContent'])
+    ...mapGetters(['intimeMode', 'editorContent', 'isSelectLineNum'])
   },
   methods: {
     ...mapMutations({
-      setEditorContent: 'setEditorContent'
+      setEditorContent: 'setEditorContent',
+      setIsSelectLineNum: 'setIsSelectLineNum'
     }),
     // 初始化
       _initialize () {
@@ -150,12 +163,7 @@ export default {
         // 支持双向绑定
         this.coder.on('change', (coder) => {
           this.code = coder.getValue()
-          console.log(this.code)
           this.setEditorContent(this.code)
-
-          if (this.$emit) {
-            this.$emit('input', this.code)
-          }
           // 判断当前是否开启实时编译模式
           if(this.intimeMode){
             this.intimeCompile()
@@ -198,12 +206,17 @@ export default {
         this.$emit('language-change', label)
       },
     intimeCompile(){
+      // this.withLineNum()
       this.renderContent()
     },
     renderContent(){
-      console.log(this.editorContent)
-      const outputContent = md.render(this.editorContent);
-      // 
+      // const inputContent = document.getElementById('editor').value;
+      const inputContent = this.editorContent;
+      const outputContent = md.render(inputContent);
+      document.getElementById('output_wrapper').innerHTML = outputContent
+
+      this.$emit('ok2');
+      // TODO 默认显示行号，有困难实现，尽快找原因
       console.log(outputContent)
       this.$refs.output_wrapper.innerHTML = outputContent
     },
@@ -211,8 +224,6 @@ export default {
       const css = e.target.value;
       console.log('../assets/css/'+ css + '.css')
       this.getStyleByHttp(css);
-      // console.log(style)
-      // this.$refs.hsStyle.innerHTML = style;
 
     },
     getStyleByHttp(css){
@@ -222,12 +233,29 @@ export default {
           document.getElementById('hsStyle').innerHTML = res.data;
           // this.$refs.hsStyle.innerHTML = res.data;
       });
-}
+    },
+    withLineNum(){
+      let blocks = document.querySelectorAll("pre code");
+      if(this.isSelectLineNum) {
+        blocks.forEach(block => {
+        // hljs.highlightBlock(block);
+          console.log(lineNumbersBlock)
+          lineNumbersBlock(block, {
+              singleLine: false
+          });
+      });
+      }else{
+        // 调用转换，暂时用
+        this.md_render();
+      }
+      
+    },
   }
   
 }
 </script>
 <style lang="scss" scoped>
+
 .wrapper{
   height: calc(100vh - 60px);
   .editor{

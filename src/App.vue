@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <global-header ></global-header>
-    <global-content></global-content>
+    <global-header ref="globalHeader"></global-header>
+    <global-content ref="globalContent" @ok="ok2"></global-content>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     globalHeader,
     globalContent
+  },
+  methods: {
+    ok2(){
+      this.$refs.globalHeader.setLineNum()
+    }
   }
 }
 </script>
