@@ -40,3 +40,13 @@ npm run build
 ![项目图片](https://raw.githubusercontent.com/gruguy/md-simple-parser/master/public/assets/img/md-simple-parser-opt_ev.gif)
 
 ## demo我运行在GitHub上面了，点击这里查看[点我查看demo](https://gruguy.github.io/md-simple-parser/)
+
+### tips: 如何将vue项目打包的dist目录发布到git pages
+
+- 本地vue项目打包，注意更改`publicPath` 为 './' 或者 '/项目名/'
+
+- git提交代码并将dist目录提交至github上（需要去.gitignore文件中去掉dist）
+
+- 运行代码： `git subtree push --prefix dist orgin gh-pages`其中 orgin是你自己的项目github地址，替换即可，这段代码会生成一个gh-pages 分支，并且将dist目录拷贝进去
+
+- 项目切换到gh-pages分支，打开 setting -> GitHub Pages 如果你之前发布过git pages那现在已经发不好了，复制地址打开就好 
