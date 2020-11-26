@@ -178,6 +178,9 @@ export default {
           background-color: #333;
           color: #fff;
         }
+        &:hover{
+          background-color: #ccc;
+        }
       }
       select{
         margin-left: 20px;

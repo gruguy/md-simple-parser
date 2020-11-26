@@ -11,7 +11,7 @@ import globalContent from './components/globalContent.vue'
 
 export default {
   name: 'App',
-  components: {
+  components: { 
     globalHeader,
     globalContent
   },

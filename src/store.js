@@ -26,7 +26,6 @@ let store = new Vuex.Store({
             state.intimeMode = value;
         },
         setIsSelectLineNum(state, value) {
-            alert(value)
             state.isSelectLineNum = value;
         }
     }
